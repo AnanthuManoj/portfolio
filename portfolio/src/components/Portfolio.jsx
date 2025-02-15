@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fa';
 import About from './About';
 import Hero from './Hero';
-import Navbar from './navbar';
+import Navbar from './Navbar';
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
