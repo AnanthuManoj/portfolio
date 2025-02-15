@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 
 const Navbar = ({ activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
-      }
       setIsMobileView(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false); // Close menu on resize to desktop
+      }
     };
 
+    handleResize(); // Run once on mount
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -47,7 +48,7 @@ const Navbar = ({ activeSection }) => {
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={() => setIsMenuOpen((prev) => !prev)}
                 className="p-2 text-gray-300 hover:text-blue-400 transition-colors focus:outline-none"
                 aria-label="Toggle menu"
               >
@@ -83,8 +84,8 @@ const Navbar = ({ activeSection }) => {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden absolute top-16 left-0 w-full bg-gray-900/95 backdrop-blur-lg transform transition-transform duration-300 ${
-            isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+          className={`md:hidden fixed top-16 left-0 w-full bg-gray-900/95 backdrop-blur-lg transition-all duration-300 ${
+            isMenuOpen ? "h-auto opacity-100 visible" : "h-0 opacity-0 invisible"
           }`}
         >
           <div className="px-6 py-4 space-y-2 text-center">
@@ -97,7 +98,7 @@ const Navbar = ({ activeSection }) => {
                     ? "text-blue-400 bg-gray-800"
                     : "text-gray-300 hover:text-blue-400 hover:bg-gray-700"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => setIsMenuOpen(false)} // Close menu on click
               >
                 {item}
               </a>
