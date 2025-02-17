@@ -101,9 +101,10 @@ function Hero() {
               <div className="absolute inset-0 bg-gray-900 rounded-2xl" />
               <img
                 src="profile.png"
-                alt="Profile"
+                loading="lazy" alt="Ananthu Manoj - Developer" 
                 className="relative rounded-2xl object-cover shadow-2xl transform hover:scale-105 transition-transform duration-300"
               />
+            
               {/* Decorative elements */}
               <div className="absolute -bottom-4 -right-4 w-16 h-16 sm:w-24 sm:h-24 bg-blue-500/20 rounded-full blur-xl" />
               <div className="absolute -top-4 -left-4 w-16 h-16 sm:w-24 sm:h-24 bg-purple-500/20 rounded-full blur-xl" />
