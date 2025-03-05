@@ -100,7 +100,7 @@ function Hero() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl rotate-6 transform hover:rotate-12 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gray-900 rounded-2xl" />
               <img
-                src="profile.png"
+                src="profile.jpeg"
                 loading="lazy" alt="Ananthu Manoj - Developer" 
                 className="relative rounded-2xl object-cover shadow-2xl transform hover:scale-105 transition-transform duration-300"
               />
